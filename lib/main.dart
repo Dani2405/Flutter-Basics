@@ -76,52 +76,50 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
           //Table Contents
           Column(
-          children: [
-              //Single Movie
-
-              FlatButton (
-                padding: EdgeInsets.all(0),
-                color: Color(0xFF2F2F2F),
-                splashColor: Colors.black54,
-                onPressed: () {
-                  print("Here we go!");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Movie()),
-                  );
-                },
-                child: Container(
-                  height: 80,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: Text('The Testing of an App: Begins', overflow: TextOverflow.ellipsis, style: TextStyle(color: Colors.white, fontSize: 14)),),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.15,
-                        child: Text('8/10', style: TextStyle(color: Colors.white, fontSize: 14)),),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.05,
-                        child: Icon(Icons.chevron_right, color: Colors.white,),),
-                    ],
+            children: [
+                //Single Movie
+                FlatButton (
+                  padding: EdgeInsets.all(0),
+                  color: Color(0xFF2F2F2F),
+                  splashColor: Colors.black54,
+                  onPressed: () {
+                    print("Here we go!");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Movie()),
+                    );
+                  },
+                  child: Container(
+                    height: 80,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Text('The Testing of an App: Begins', overflow: TextOverflow.ellipsis, style: TextStyle(color: Colors.white, fontSize: 14)),),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.15,
+                          child: Text('8/10', style: TextStyle(color: Colors.white, fontSize: 14)),),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.05,
+                          child: Icon(Icons.chevron_right, color: Colors.white,),),
+                      ],
+                    ),
                   ),
                 ),
-              ),
 
-              //Bottom Border --------------------------------------------------
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border(bottom: BorderSide(width: 1.0, color: Color(0xFF252525)),),
+                //Bottom Border --------------------------------------------------
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border(bottom: BorderSide(width: 1.0, color: Color(0xFF252525)),),
+                  ),
                 ),
-              ),
 
-          ],
+            ],
           ),
       //Body children
         ],
       ),
-
 
       //Buttons
       floatingActionButton: Container(
@@ -131,6 +129,40 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           child: FloatingActionButton(
             onPressed: () {
               print("Here we add!");
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    content: Form(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                        Text("Movie title:"),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Insert title...'
+                            ),
+                          ),
+
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: RaisedButton(
+                            child: Text("Submit"),
+                            onPressed: () {
+                              print('Submitting!');
+                            },
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  );
+                },
+              );
             },
             backgroundColor: Color(0xFFFFCA43),
             child: Icon(Icons.add, color: Colors.black,),

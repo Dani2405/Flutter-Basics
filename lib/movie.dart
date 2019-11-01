@@ -5,26 +5,24 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_basics/main.dart';
 
 class Movie extends StatelessWidget {
-  static const String _title = 'Flutter Basics - Movies';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
-      home: MyStatefulWidget(),
+      home: SingleMovie(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class MyStatefulWidget extends StatefulWidget {
-  MyStatefulWidget({Key key}) : super(key: key);
+class SingleMovie extends StatefulWidget {
+  SingleMovie({Key key}) : super(key: key);
 
   @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+  _SingleMovieState createState() => _SingleMovieState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _SingleMovieState extends State<SingleMovie> {
   Widget build(BuildContext context) {
 
     return Scaffold(
@@ -62,7 +60,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
           //Contents
           Container(
-            width: MediaQuery.of(context).size.width * 1,
             child: Padding(
               padding: EdgeInsets.all(10),
               child: Column(
